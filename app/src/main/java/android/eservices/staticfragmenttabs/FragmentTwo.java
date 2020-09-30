@@ -9,22 +9,20 @@ import android.widget.Button;
 
 import androidx.fragment.app.Fragment;
 
-//TODO : fix this fragment so it works :)
-//Once it's done, then create a second fragment with the other layout
-public class FragmentOne extends Fragment implements View.OnClickListener {
+public class FragmentTwo extends Fragment implements View.OnClickListener {
 
     public static final String TAB_NAME = "ADD TO COUNTER";
     View view;
 
-    public FragmentOne() {
+    public FragmentTwo() {
         //TODO
 
     }
 
-    public static FragmentOne newInstance() {
+    public static FragmentTwo newInstance() {
         //TODO
-        FragmentOne f1 = new FragmentOne();
-        return f1;
+        FragmentTwo f2 = new FragmentTwo();
+        return f2;
     }
 
     @Override
@@ -32,8 +30,8 @@ public class FragmentOne extends Fragment implements View.OnClickListener {
                              Bundle savedInstanceState) {
         //TODO
         Button b;
-        view = inflater.inflate(R.layout.fragment_one, container, false);
-        b = (Button) view.findViewById(R.id.button_increment);
+        view = inflater.inflate(R.layout.fragment_two, container, false);
+        b = (Button) view.findViewById(R.id.button_decrement);
         b.setOnClickListener(this);
         return view;
     }
@@ -50,19 +48,15 @@ public class FragmentOne extends Fragment implements View.OnClickListener {
 
     @Override
     public void onClick(View view) {
-        passData(1);
+        passData(-1);
     }
 
-    public interface OnDataPass {
-        void onDataPass(int data);
-    }
-
-    OnDataPass dataPasser;
+    FragmentOne.OnDataPass dataPasser;
 
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
-        dataPasser = (OnDataPass) context;
+        dataPasser = (FragmentOne.OnDataPass) context;
     }
 
     public void passData(int data) {
@@ -70,6 +64,7 @@ public class FragmentOne extends Fragment implements View.OnClickListener {
     }
 
 
-    //TODO add listener to button and transmit the information to parent Activity
-    //TODO read the Android doc, as suggested, to do it the right way
+//TODO add listener to button and transmit the information to parent Activity
+//TODO read the Android doc, as suggested, to do it the right way
+
 }
